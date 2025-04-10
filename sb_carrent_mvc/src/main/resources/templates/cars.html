@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+
+	<div th:if="${cld != null}">
+	
+		<table border="1" style="width:25%; text-align: center; vertical-align: middle;">
+			
+			<tr>
+				<th>Car Type</th>
+				<th>Daily price</th>
+			</tr>
+	
+	        <tr th:each=" cars : ${cld.getCarDtoList()}">
+				<td th:text="${cars.getType()}" ></td>
+				<td th:text="${cars.getPrice()}"></td>
+			</tr>
+		</table>
+
+	</div>
+	
+	<p>Choose a car from the list</p>
+	
+	<form action="/cars/startbooking" method="post">
+		
+		<input type="hidden" name="startdate" th:value="${cld.getStartDate()}"/>
+		<input type="hidden" name="enddate" th:value="${cld.getEndDate()}"/>
+			<select name="carid">
+				<option>Select a car</option>
+				<option th:each=" cars : ${cld.getCarDtoList()}" th:text="${cars.getType()}" th:value="${cars.getId()}"></option>
+			</select>
+		<input type="submit" value="CHOOSE"/>	
+			
+	</form>
+
+
+
+</body>
+</html>

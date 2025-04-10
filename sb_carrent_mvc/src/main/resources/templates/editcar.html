@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+		<p> Add a new car</p>
+		
+		<form action="/admin/newcar" method="post">
+			
+			<input type="text" name="type" placeholder="TYPE"/>
+			<input type="text" name="price" placeholder="PRICE"/>
+			<input type="text" name="active" placeholder="TRUE or FALSE"/>
+			
+			<input type="submit" value="SAVE">
+		
+		</form>
+		
+		<p>Edit Car</p>
+		
+		  <form th:action="/admin/editcar/update" method="post">
+		  
+		    <input type="hidden" name="carid" th:value="${editCarDto.getId()}" />
+		    
+		    <input type="text" name="type" th:value="${editCarDto.getType()}" />
+		    
+		    <input type="number" name="price" th:value="${editCarDto.getPrice()}" /
+		    >
+		    <input type="text" name="active" th:value="${editCarDto.isActive()}" />
+		    
+    		<input type="submit" value="Save Changes"/>
+		
+		</form>
+		
+		<br>
+		<a href="/admin">Back to ADMIN page</a>
+	
+	</body>
+</html>

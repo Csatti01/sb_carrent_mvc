@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Panel</title>
+</head>
+<body>
+	<p>All Bookings: </p>
+	
+	<table border="1" style="width:25%; text-align: center; vertical-align: middle;">
+		<tr>
+			<th>Car ID</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Full Price</th>
+		</tr>
+		<tr th:each="booking : ${adminDto.allBookings}">
+			<td th:text="${booking.getCarId()}"></td>
+			<td th:text="${booking.getStartDate()}"></td>
+			<td th:text="${booking.getEndDate()}"></td>
+			<td th:text="${booking.getFullPrice()}"></td>
+		</tr>
+	</table>
+
+	<p>Carlist: </p>
+	
+	<table border="1" style="width:25%; text-align: center; vertical-align: middle;">
+		<tr>
+			<th>ID</th>
+			<th>Type</th>
+			<th>Price</th>
+			<th>Edit</th>
+		</tr>
+		<tr th:each="car : ${adminDto.allCars}">
+			<td th:text="${car.getId()}"></td>
+			<td th:text="${car.getType()}"></td>
+			<td th:text="${car.getPrice()}"></td>
+			
+			<td><a href="/admin/editcar?carid=${car.getId()}">Edit</a></td>
+			
+		</tr>
+	</table>
+	
+	<br>
+	<a href="/admin/editcar">Save new car</a>
+	
+</body>
+</html>

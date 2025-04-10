@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<body>
+
+	<p>Car booking period</p>
+	
+	<table border="1" style="width:25%; text-align: center; vertical-align: middle;">
+	
+		<tr>
+			<th>ID</th>
+			<th>Starting Date</th>
+			<th>End Date</th>
+			<th>Price</th>
+		</tr>
+		
+		<tr>
+			<td th:text="${bookingDto.getCarId()}"></td>
+			<td th:text="${bookingDto.getStartDate()}"></td>
+			<td th:text="${bookingDto.getEndDate()}"></td>
+			<td th:text="${bookingDto.getFullPrice()}"></td>
+		</tr>
+	
+	</table>
+	
+	<p>Finish your booking</p>
+	
+	<form action="/cars/endbooking" method="post">
+		
+		<input type="hidden" name="carid" th:value="${bookingDto.getCarId()}"/>
+		<input type="hidden" name="startdate" th:value="${bookingDto.getStartDate()}"/>
+		<input type="hidden" name="enddate" th:value="${bookingDto.getEndDate()}"/>
+		<input type="text" name="name" placeholder="Name"/>
+		<input type="text" name="email" placeholder="E-mail"/>
+		<input type="text" name="address" placeholder="Address"/>
+		<input type="text" name="phone" placeholder="Phone number"/>
+			
+		<input type="submit" value="Confirm"/>	
+			
+	</form>
+
+
+</body>
+</html>
