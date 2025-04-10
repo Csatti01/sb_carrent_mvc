@@ -18,22 +18,23 @@
 		
 		</form>
 		
-		<p>Edit Car</p>
-		
-		  <form th:action="/admin/editcar/update" method="post">
-		  
-		    <input type="hidden" name="carid" th:value="${editCarDto.getId()}" />
-		    
-		    <input type="text" name="type" th:value="${editCarDto.getType()}" />
-		    
-		    <input type="number" name="price" th:value="${editCarDto.getPrice()}" /
-		    >
-		    <input type="text" name="active" th:value="${editCarDto.isActive()}" />
-		    
-    		<input type="submit" value="Save Changes"/>
-		
-		</form>
-		
+		<div th:if="${editCarDto != null}">
+			<p>Edit Car</p>
+			
+			  <form action="/admin/editcar/update" method="post">
+			  
+			    <input type="hidden" name="carid" th:value="${editCarDto.getId()}" />
+			    
+			    <input type="text" name="type" th:value="${editCarDto.getType()}" />
+			    
+			    <input type="number" name="price" th:value="${editCarDto.getPrice()}" />
+			    
+			    <input type="text" name="active" th:value="${editCarDto.isActive()}" />
+			    
+	    		<input type="submit" value="Save Changes"/>
+			
+			</form>
+		</div>
 		<br>
 		<a href="/admin">Back to ADMIN page</a>
 	

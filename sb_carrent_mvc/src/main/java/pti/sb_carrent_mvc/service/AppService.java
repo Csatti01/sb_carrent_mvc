@@ -252,11 +252,12 @@ public class AppService {
 	}
 
 
-	public EditCarDto updateCar(int carId, String type, int price, boolean active) {
+	public AdminDto updateCar(int carId, String type, int price, boolean active) {
 		
-		EditCarDto editCarDto = null;
+		AdminDto adminDto = null;
 	    
 		Car car = db.getCarById(carId);
+		
 	    
 	    if (car != null) {
 	        
@@ -266,18 +267,11 @@ public class AppService {
 
 	        db.updateCar(car);
 	        
-	        editCarDto = new EditCarDto(
-					car.getId(),
-					car.getType(),
-					car.getPrice(),
-					car.isActive()
-				);
+	        adminDto= this.getAllBookings();
+					
 	    }
 	    
-	    return editCarDto;
+	    return adminDto;
 	}
-
-
-	
 
 }

@@ -115,14 +115,14 @@ public class AppController {
 	@GetMapping("/admin/editcar")
 	public String editCar (
 				Model model,
-				@RequestParam("carid") int carId
+				@RequestParam(name="carid", required = false, defaultValue = "-1") int carId
 
 			) {
+		if(carId != -1) {
+			EditCarDto editCarDto = service.editCar(carId);
 		
-		EditCarDto editCarDto = service.editCar(carId);
-		
-		model.addAttribute("editCarDto", editCarDto);
-	
+			model.addAttribute("editCarDto", editCarDto);
+		}
 		return "editcar.html";
 	}
 	
@@ -135,9 +135,9 @@ public class AppController {
 	            @RequestParam("active") boolean active
             ) {
         
-        EditCarDto editCarDto = service.updateCar(carId, type, price, active);
+		AdminDto adminDto = service.updateCar(carId, type, price, active);
         
-        model.addAttribute("editCarDto", editCarDto);
+        model.addAttribute("adminDto", adminDto);
         
         return "admin.html";
 	}

@@ -36,7 +36,7 @@
 			<td th:text="${car.getType()}"></td>
 			<td th:text="${car.getPrice()}"></td>
 			
-			<td><a href="/admin/editcar?carid=${car.getId()}">Edit</a></td>
+			<td><a th:href="'/admin/editcar?carid=' + ${car.getId()}">Edit</a></td>
 			
 		</tr>
 	</table>
